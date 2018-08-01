@@ -51,6 +51,26 @@ else
   noroot wp core update --version="${WP_VERSION}"
 fi
 
+## ARAGATO CUSTOM CODE - START ##
+
+# Update options
+wp option update --allow-root --quiet blogdescription ''
+wp option update --allow-root --quiet start_of_week 0
+wp option update --allow-root --quiet timezone_string 'Europe/Berlin'
+wp option update --allow-root --quiet permalink_structure '/%postname%/'
+
+# Delete unneeded default themes and plugins
+wp theme delete --allow-root --quiet twentytwelve
+wp theme delete --allow-root --quiet twentythirteen
+wp plugin delete --allow-root --quiet hello
+
+# Get plugins
+wp plugin install --allow-root --quiet wordpress-seo
+wp plugin install --allow-root --quiet google-analytics-for-wordpress --activate
+wp plugin install --allow-root --quiet pods --activate
+
+## ARAGATO CUSTOM CODE - END ##
+
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
 sed -i "s#{{DOMAINS_HERE}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
 

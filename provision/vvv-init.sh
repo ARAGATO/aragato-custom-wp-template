@@ -55,19 +55,65 @@ fi
 
 # Update options
 wp option update --allow-root --quiet blogdescription ''
-wp option update --allow-root --quiet start_of_week 0
+wp option update --allow-root --quiet start_of_week 1
 wp option update --allow-root --quiet timezone_string 'Europe/Berlin'
 wp option update --allow-root --quiet permalink_structure '/%postname%/'
+wp option update --allow-root --quiet admin_email admin@aragato.com
+wp option update --allow-root --quiet date_format 'd.m.Y'
+wp option update --allow-root --quiet time_format 'H:i'
+wp option update --allow-root --quiet gzipcompression 1
+wp option update --allow-root --quiet enable_xmlrpc 0
+
+# Language settings
+wp language core install --allow-root --quiet de_DE
+wp language core activate --allow-root --quiet de_DE
 
 # Delete unneeded default themes and plugins
 wp theme delete --allow-root --quiet twentytwelve
 wp theme delete --allow-root --quiet twentythirteen
+wp theme delete --allow-root --quiet twentyfourteen
+wp theme delete --allow-root --quiet twentyfifteen
+wp theme delete --allow-root --quiet twentysixteen
 wp plugin delete --allow-root --quiet hello
+wp plugin delete --allow-root --quiet akismet
+wp post delete --allow-root --quiet $(wp post list --post_type='page' --format=ids)
+wp post delete --allow-root --quiet $(wp post list --post_type='post' --format=ids)
 
 # Get plugins
+wp plugin install --allow-root --quiet a3-lazy-load
+wp plugin install --allow-root --quiet admin-menu-editor
+wp plugin install --allow-root --quiet adminimize
+wp plugin install --allow-root --quiet advanced-custom-fields
+wp plugin install --allow-root --quiet better-wp-security
+wp plugin install --allow-root --quiet bnfw
+wp plugin install --allow-root --quiet cookie-notice
+wp plugin install --allow-root --quiet css-javascript-toolbox
+wp plugin install --allow-root --quiet custom-login-logo
+wp plugin install --allow-root --quiet duplicate-post --activate
+wp plugin install --allow-root --quiet force-regenerate-thumbnails --activate
+wp plugin install --allow-root --quiet hh-sortable --activate
+wp plugin install --allow-root --quiet iwp-client
+wp plugin install --allow-root --quiet loco-translate
+wp plugin install --allow-root --quiet my-custom-functions --activate
+wp plugin install --allow-root --quiet nk-google-analytics
+wp plugin install --allow-root --quiet quick-and-easy-faqs
+wp plugin install --allow-root --quiet redirection
+wp plugin install --allow-root --quiet ssl-insecure-content-fixer
+wp plugin install --allow-root --quiet stealth-login-page
+wp plugin install --allow-root --quiet stops-core-theme-and-plugin-updates
+wp plugin install --allow-root --quiet taxonomy-terms-order --activate
+wp plugin install --allow-root --quiet the-events-calendar
+wp plugin install --allow-root --quiet tinymce-advanced
+wp plugin install --allow-root --quiet uji-popup
+wp plugin install --allow-root --quiet user-role-editor
+wp plugin install --allow-root --quiet velvet-blues-update-urls
+wp plugin install --allow-root --quiet w3-total-cache
+wp plugin install --allow-root --quiet wordpress-php-info --activate
 wp plugin install --allow-root --quiet wordpress-seo
-wp plugin install --allow-root --quiet google-analytics-for-wordpress --activate
-wp plugin install --allow-root --quiet pods --activate
+wp plugin install --allow-root --quiet wp-crontrol
+wp plugin install --allow-root --quiet wp-mail-smtp
+wp plugin install --allow-root --quiet wp-slimstat
+wp plugin install --allow-root --quiet wp-staging
 
 ## ARAGATO CUSTOM CODE - END ##
 

@@ -76,8 +76,9 @@ wp theme delete --allow-root --quiet twentyfifteen
 wp theme delete --allow-root --quiet twentysixteen
 wp plugin delete --allow-root --quiet hello
 wp plugin delete --allow-root --quiet akismet
-wp post delete $(wp post list --post_type='page' --format=ids)
-wp post delete $(wp post list --post_type='post' --format=ids)
+wp post --allow-root --quiet delete 1
+wp post --allow-root --quiet delete 2
+wp post --allow-root --quiet delete 3
 
 # Get plugins
 wp plugin install --allow-root --quiet a3-lazy-load

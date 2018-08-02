@@ -87,6 +87,7 @@ wp plugin install --allow-root --quiet adminimize
 wp plugin install --allow-root --quiet advanced-custom-fields
 wp plugin install --allow-root --quiet better-wp-security
 wp plugin install --allow-root --quiet bnfw
+wp plugin install --allow-root --quiet duplicator
 wp plugin install --allow-root --quiet cookie-notice
 wp plugin install --allow-root --quiet css-javascript-toolbox
 wp plugin install --allow-root --quiet custom-login-logo
